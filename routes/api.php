@@ -24,7 +24,7 @@ Route::middleware('auth:api')
 
 Route::post('sanctum/token', 'UserTokenController');
 
-Route::apiResource('products', 'ProductController')
-    ->middleware('auth:sanctum');
+Route::resource('products', 'ProductController');
+    // ->middleware('auth:sanctum');
 Route::apiResource('categories', 'CategoryController')
     ->middleware('auth:sanctum');
