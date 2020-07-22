@@ -1,5 +1,5 @@
 <?php
-
+// phpcs:disable
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::middleware('auth:api')
+    ->get(
+        '/user', 
+        function (Request $request) {
+            return $request->user();
+        }
+    );
 
-Route::resource('products', 'ProductController');
-Route::resource('categories', 'CategoryController');
+Route::post('sanctum/token', 'UserTokenController');
+
+Route::apiResource('products', 'ProductController')
+    ->middleware('auth:sanctum');
+Route::apiResource('categories', 'CategoryController')
+    ->middleware('auth:sanctum');

@@ -3,9 +3,11 @@
 namespace Tests\Feature;
 
 use App\Category;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Laravel\Sanctum\Sanctum;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\User;
 
 class CategoryControllerTest extends TestCase
 {
@@ -20,6 +22,10 @@ class CategoryControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
+
+        Sanctum::actingAs(
+            factory(User::class)->create()
+        );
     }
 
     /**
