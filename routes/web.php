@@ -19,3 +19,11 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
